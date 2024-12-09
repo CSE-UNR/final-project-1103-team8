@@ -1,5 +1,4 @@
-// Team-8 Function 2
-
+//Couldn't work
 #include <stdio.h>
 
 void InputFunction(int rowIndex, int columnIndex, char sheet[][columnIndex]){
