@@ -8,8 +8,8 @@
 #define COLUMNINDEX 100
 
 char copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
-void ANV_Function(int rowIndex, char ANV_string[rowIndex], char originalString[][COLUMNINDEX]);
-void userInput(int rowIndex, char ANV_string[rowIndex]);
+void ANV_Function(int rowIndex, char ANV_string[ROWINDEX], char originalString[][COLUMNINDEX]);
+void userInput(int rowIndex, char ANV_string[ROWINDEX]);
 void wordReplace(int rowIndex, char originalString[][COLUMNINDEX], char ANV_string[ROWINDEX]);
 void display(int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
  
@@ -19,8 +19,8 @@ int main(){
 	char ANV_string[ROWINDEX];
 	char originalString[ROWINDEX][COLUMNINDEX];
 	
-	FILE* fp;			//adjusted asterisk position per conventions	-Perry
-	fp = fopen(FILE1, "r");		//file was in "w" mode, must be in "r" mode to take info out from the file	-Perry
+	FILE* fp;			
+	fp = fopen(FILE1, "r");		
 	if(fp == NULL){
 		printf("can't open file\n");
 		return 0;
@@ -35,14 +35,14 @@ int main(){
 	
 	return 0;
 	}
-
+//while loop
 void copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]){
 
 	//while loop 
 	//you might want to return the number of rows in the file
 	for(int row = 0; row <= rowIndex; row++){
 		for(int column = 0; column <= columnIndex; column++){
-		fgets("madlib1.txt", " %c", fp);
+		fgets("madlib1.txt", " %s", stdin);
 			}
 		}
 	}
