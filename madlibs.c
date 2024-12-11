@@ -7,7 +7,7 @@
 #define ROWINDEX 100
 #define COLUMNINDEX 100
 
-void copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
+char copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
 void ANV_Function(int rowIndex, char ANV_string[rowIndex], char originalString[][COLUMNINDEX]);
 void userInput(int rowIndex, char ANV_string[rowIndex]);
 void wordReplace(int rowIndex, char originalString[][COLUMNINDEX], char ANV_string[ROWINDEX]);
@@ -19,8 +19,8 @@ int main(){
 	char ANV_string[ROWINDEX];
 	char originalString[ROWINDEX][COLUMNINDEX];
 	
-	FILE *fp;
-	fp = fopen(FILE1, "w");
+	FILE* fp;			//adjusted asterisk position per conventions	-Perry
+	fp = fopen(FILE1, "r");		//file was in "w" mode, must be in "r" mode to take info out from the file	-Perry
 	if(fp == NULL){
 		printf("can't open file\n");
 		return 0;
@@ -51,7 +51,7 @@ void ANV_Function(int rowIndex, char ANV_string[ROWINDEX], char originalString[]
 
 	int a = 0;
 	for(int i =0; i <= rowIndex; i++){
-		if(originalString[i][1] == '/n'){
+		if(originalString[i][1] == '\n'){
 			ANV_string[a] = originalString[i][0];
 			a++;
 		}
@@ -86,7 +86,7 @@ void wordReplace(int rowIndex, char originalString[][COLUMNINDEX], char ANV_stri
 		int a = 0;
 		for(int i = 0; i <= rowIndex; i++)
 		{
-			if(originalString[i][1] == '/n')
+			if(originalString[i][1] == '\n')
 			{
 			originalString[i][0] = ANV_string[a];
 			a++;
