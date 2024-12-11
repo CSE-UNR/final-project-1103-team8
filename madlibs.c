@@ -35,7 +35,7 @@ int main(){
 	
 	return 0;
 	}
-//while loop
+
 void copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]){
 
 	//while loop 
