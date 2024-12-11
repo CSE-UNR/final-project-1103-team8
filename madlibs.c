@@ -42,7 +42,7 @@ void copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[]
 	//you might want to return the number of rows in the file
 	for(int row = 0; row <= rowIndex; row++){
 		for(int column = 0; column <= columnIndex; column++){
-		fgets(fp, "%c", originalString[row][column]);
+		fgets("madlib1.txt", " %c", fp);
 			}
 		}
 	}
@@ -51,8 +51,7 @@ void ANV_Function(int rowIndex, char ANV_string[ROWINDEX], char originalString[]
 
 	int a = 0;
 	for(int i =0; i <= rowIndex; i++){
-	//update this if condition
-		if(i % 2 == 1){
+		if(originalString[i][1] == '/n'){
 			ANV_string[a] = originalString[i][0];
 			a++;
 		}
@@ -62,7 +61,8 @@ void ANV_Function(int rowIndex, char ANV_string[ROWINDEX], char originalString[]
 void userInput(int rowIndex, char ANV_string[ROWINDEX]){
 	
 	int i;
-	//add loop
+	for(i = 0; i <= rowIndex; i++){
+	
 	switch(ANV_string[i]){
 		case 'N':
 			printf("Enter a Noun:\n");
@@ -77,6 +77,7 @@ void userInput(int rowIndex, char ANV_string[ROWINDEX]){
 			scanf(" %s", &ANV_string[i]);
 		break;
 		}
+		}
 }
 void wordReplace(int rowIndex, char originalString[][COLUMNINDEX], char ANV_string[ROWINDEX])
 {
@@ -85,8 +86,7 @@ void wordReplace(int rowIndex, char originalString[][COLUMNINDEX], char ANV_stri
 		int a = 0;
 		for(int i = 0; i <= rowIndex; i++)
 		{
-			//change if condition
-			if(i % 2 == 1)
+			if(originalString[i][1] == '/n')
 			{
 			originalString[i][0] = ANV_string[a];
 			a++;
