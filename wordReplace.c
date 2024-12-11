@@ -16,11 +16,12 @@ void wordReplace(int row, int rowIndex, originalString[][columnindex], ANV_strin
 	for (int row = 0; row <= rowIndex; row++)
 	{
 		int a = 0;
-		for(int i =0; i <= columnIndex; i++)
+		for(int i = 0; i <= columnIndex; i++)
 		{
-			if(i % 2 = 1)
+		//Length of string @current row index == 2 && ends with a '\n'
+			if (originalString[row][1] == '\n')
 			{
-			originalstring[i][0] = ANV_string[a];
+			originalString[i][0] = ANV_string[a];
 			a++;
 			}
 		}
