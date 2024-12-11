@@ -7,14 +7,16 @@
 #define ROWINDEX 100
 #define COLUMNINDEX 100
 
-void copyFunction(int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
-void ANV_Function(int rowIndex, char ANV_string[ROWINDEX]);
-void userInput(int columnIndex, char AVN_string[COLUMNINDEX]);
+void copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
+void ANV_Function(int rowIndex, char ANV_string[rowIndex], char originalString[][COLUMNINDEX]);
+void userInput(int rowIndex, char ANV_string[rowIndex]);
 void display(int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]);
  
 int main(){
 	
-	char ANV_string[ROWINDEX], AVN_string[COLUMNINDEX], originalString[][COLUMNINDEX];
+	int rowIndex, columnIndex;
+	char ANV_string[ROWINDEX];
+	char originalString[ROWINDEX][COLUMNINDEX];
 	
 	FILE *fp;
 	fp = fopen(FILE1, "w");
@@ -22,56 +24,54 @@ int main(){
 		printf("can't open file\n");
 		return 0;
 	}
-	copyFunction(ROWINDEX, COLUMNINDEX, originalString);
-	ANV_Function(ROWINDEX, ANV_string);
-	userInput(COLUMNINDEX, AVN_string);
-	display(ROWINDEX, COLUMNINDEX, originalString);
+	copyFunction(fp, rowIndex, columnIndex, originalString);
+	ANV_Function(rowIndex, ANV_string, originalString);
+	userInput(rowIndex, ANV_string);
+	
+	display(rowIndex, columnIndex, originalString);
 	
 	fclose(fp);
 	
 	return 0;
 	}
 
-void copyFunction(int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]){
+void copyFunction(FILE* fp, int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]){
 
 	char *originalstring[ROWINDEX][COLUMNINDEX];
 
 	for(int row = 0; row <= rowIndex; row++){
 		for(int column = 0; column <= columnIndex; column++){
-		fscanf(filepointer, "%c", originalstring[row][column]);
+		fscanf(fp, "%c", originalstring[row][column]);
 			}
 		}
 	}
 	
-void ANV_Function(int rowIndex, char ANV_string[ROWINDEX]){
-
-	char ANV_string[ROWINDEX];
+void ANV_Function(int rowIndex, char ANV_string[ROWINDEX], char originalString[][COLUMNINDEX]){
 
 	int a = 0;
-	for(int i =0; i <= columnIndex; i++){
-		if(i % 2 = 1){
-			ANV_string[a] = originalstring[i][0];
+	for(int i =0; i <= rowIndex; i++){
+		if(i % 2 == 1){
+			ANV_string[a] = originalString[i][0];
 			a++;
 		}
 	}
 }
 
-void userInput(int columnIndex, char AVN_string[COLUMINDEX]){
-
-	char AVN_string[COLUMNINDEX];
+void userInput(int rowIndex, char ANV_string[ROWINDEX]){
 	
-	switch(AVN_string[i]){
+	int i;
+	switch(ANV_string[i]){
 		case 'N':
 			printf("Enter a Noun:\n");
-			scanf(" %s", &AVN_string[i]);
+			scanf(" %s", &ANV_string[i]);
 		break;
 		case 'A':
 			printf("Enter a Adjective:\n");
-			scanf(" %s", &AVN_string[i]);
+			scanf(" %s", &ANV_string[i]);
 		break;
 		case 'V':
 			printf("Enter a Verb:\n");
-			scanf(" %s", &AVN_string[i]);
+			scanf(" %s", &ANV_string[i]);
 		break;
 		}
 }
@@ -81,6 +81,6 @@ void display(int rowIndex, int columnIndex, char originalString[][COLUMNINDEX]){
 		for(int value = 0; value < columnIndex; value++){
 			printf("%s", originalString);
 			}
-		printf("\n");
 		}
+		printf("\n");
 	}
